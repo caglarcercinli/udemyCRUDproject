@@ -10,6 +10,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @NotNull
+    private String userName;
+    @NotNull
+    private String password;
+    @NotNull
     private String firstName;
     @NotNull
     private String lastName;
@@ -21,8 +25,9 @@ public class User {
     public User() {
     }
 
-    public User( String firstName, String lastName, int age, String country) {
-
+    public User(String userName, String password, String firstName, String lastName, int age, String country) {
+        this.userName = userName;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -31,6 +36,22 @@ public class User {
 
     public long getId() {
         return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -70,18 +91,20 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && age == user.age && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(country, user.country);
+        return id == user.id && age == user.age && Objects.equals(userName, user.userName) && Objects.equals(password, user.password) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(country, user.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, age, country);
+        return Objects.hash(id, userName, password, firstName, lastName, age, country);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
