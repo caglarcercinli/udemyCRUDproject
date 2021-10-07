@@ -21,8 +21,8 @@ public class User {
     public User() {
     }
 
-    public User(long id, String firstName, String lastName, int age, String country) {
-        this.id = id;
+    public User( String firstName, String lastName, int age, String country) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -31,10 +31,6 @@ public class User {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
